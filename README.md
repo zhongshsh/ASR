@@ -23,7 +23,7 @@ We provide an example to train **ResNet164 + ASR (SE)** on **CIFAR-100**, where 
 
 ### 1️⃣ Install Dependencies  
 
-Ensure you have Python and [PyTorch](http://pytorch.org/) installed. Then, install the required packages:  
+Ensure you have Python and [PyTorch](https://pytorch.org/get-started/locally/) installed. Then, install the required packages:  
 ```sh
 pip install -r requirements.txt
 ```  
