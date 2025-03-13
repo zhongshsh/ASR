@@ -4,22 +4,22 @@ This repository provides the official implementation of **"Stripe Observation Gu
 
 ## 🚀 Introduction  
 
-**Structural Re-parameterization (SRP)** is a technique that enhances neural networks **without increasing inference costs**. While existing SRP methods work well with normalizations, convolutions, etc., they struggle with **attention modules** due to their multiplicative nature and input dependency.  
+**Structural Re-parameterization (SRP)** is a technique that enhances neural networks **without extra inference costs**. While existing SRP methods work well with normalizations, convolutions, etc., they struggle with **attention modules** due to their multiplicative nature and input dependency.  
 
 ### 🔍 Our Key Insight: **Stripe Observation**  
 
-We discovered a phenomenon where **channel attention values tend to stabilize to constant vectors** during training. Inspired by this, we propose **ASR (Attention-alike SRP)**, which allows attention mechanisms to be re-parameterized like SRP—achieving the benefits of attention without added inference cost.  
+We discover a phenomenon where **channel attention values tend to stabilize to constant vectors** during training. Inspired by this, we propose **ASR (Attention-alike SRP)**, which allows attention mechanisms to be re-parameterized like SRP—achieving the benefits of attention without added inference cost.  
 
 <p align="center">
   <img src="images/arch.jpg" height="300">
   <br>
-  <i><b>Left</b>: The phenomenon of Stripe Observation. <b>Right</b>: The architecture of ASR: During training, a learnable vector is used as input to the attention module. At inference time, the attention module is merged into the backbone network.</i>
+  <i><b>Left</b>: The phenomenon of Stripe Observation. <b>Right</b>: The architecture of ASR. During training, a learnable vector is used as input to the attention module. At inference time, the attention module is merged into the backbone network.</i>
 </p>  
 
 
 ## 🛠️ Getting Started  
 
-We provide an example to train **ResNet164 + ASR (SE)** on **CIFAR-100**, where [SE](https://arxiv.org/pdf/1709.01507) is a typical self-attention module.
+We provide an example to train **ResNet164 + ASR (SE)** on **CIFAR-100**, where [SE](https://arxiv.org/pdf/1709.01507) is a typical self-attention module. In this example, we merge our ASR into BatchNorm.
 
 ### 1️⃣ Install Dependencies  
 
@@ -50,7 +50,7 @@ python run.py --arch resnet --module senet --use-asr --dataset cifar100 --use-ti
 - (**Cost-free**) ASR enhances performance without adding inference cost.
   - Inference speed: ResNet164 + ASR (SE) = ResNet164.
   - Performance: ResNet164 + ASR (SE) ≈ ResNet164 + SE.  
-- (**Compatibility**) ASR seamlessly integrates with existing attention modules.
+- (**Compatibility**) ASR seamlessly integrates with existing attention modules, such as **ResNet164 + ASR (SE) + SE**.
 
 
 ## 🔧 How ASR Works  
